@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sorting Algorithms Visualizer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="array"></div>
+    </div>
+    <div class="toolbar">
+      <button id="randomBtn">Random</button>
+      <div class="divider"></div>
+      <p>Array size:</p>
+      <input class="slider" type="range" min="10" max="100" value="50" />
+      <div class="slider-value"></div>
+      <div class="divider"></div>
+      <button id="selectionBtn">Selection sort</button>
+      <button>Merge sort</button>
+      <button>Insertion sort</button>
+      <button>Heap sort</button>
+    </div>
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>

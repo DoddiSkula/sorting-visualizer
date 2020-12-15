@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  color: #333333;
+}
+
+p {
+  color: #7d7d7d;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+button {
+  width: 100px;
+  height: 2.5rem;
+  margin: 0.5rem;
+  background-color: #5bcecc;
+  border: none;
+  color: #fbfbfb;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #4da8a6;
+  color: #fbfbfb;
+}
+
+button:focus {
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  background-color: rgb(250, 250, 250);
+}
+
+.array {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: calc(100vh - 5rem);
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.bar {
+  width: 0.5rem;
+  background-color: #d8d8d8;
+  margin-right: 0.5rem;
+}
+
+.bar-red {
+  width: 0.5rem;
+  background-color: #ff6b6b;
+  margin-right: 0.5rem;
+}
+
+.bar-blue {
+  width: 0.5rem;
+  background-color: #8bd0df;
+  margin-right: 0.5rem;
+}
+
+.bar-green {
+  width: 0.5rem;
+  background-color: #85e96f;
+  margin-right: 0.5rem;
+}
+
+.toolbar {
+  align-items: center;
+  background-color: rgb(250, 250, 250);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 5rem;
+}
+
+.divider {
+  border-left: 2px solid #e9e9e9;
+  height: inherit;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 0.5rem;
+  border-radius: 5px;
+  background: #cfcfcf;
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin-left: 1rem;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #5bcecc;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #5bcecc;
+  cursor: pointer;
+}
+
+.slider-value {
+  color: #7d7d7d;
+  margin-left: 1rem;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
