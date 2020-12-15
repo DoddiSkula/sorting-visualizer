@@ -1,2 +1,4 @@
 # sorting-visualizer
-Sorting algorithms visualized
+
+Sorting algorithms visualized.
+Live version can be viewed here https://doddiskula.github.io/sorting-visualizer/.
