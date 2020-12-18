@@ -7,6 +7,8 @@ const arrayEl = document.querySelector('.array');
 const randomBtn = document.querySelector('#randomBtn');
 const selectionBtn = document.querySelector('#selectionBtn');
 
+let height = window.innerHeight / 100;
+
 sliderValue.textContent = slider.value;
 
 // slider that changes array size
@@ -28,10 +30,18 @@ let arrayLength = slider.value;   // length of array
 function createArray(arrayLength) {
   array = [];
   for (let i = 0; i < arrayLength; i++) {
-    array.push(getRandomInt(8, 450));
+    array.push(getRandomInt(1, 80));
   }
   draw(array);
 }
+
+export function disableButtons(bool){
+  slider.disabled = bool;
+  randomBtn.disabled = bool;
+  selectionBtn.disabled = bool;
+}
+
+
 
 // draws the array as bars
 export function draw(color) {
@@ -43,22 +53,22 @@ export function draw(color) {
     if (color[i] === 'green') {
       const barEl = el('div');
       barEl.setAttribute('class', 'bar-green');
-      barEl.setAttribute('style', `height: ${array[i]}px`);
+      barEl.setAttribute('style', `height: ${array[i]*height}px`);
       arrayEl.appendChild(barEl);
     } else if (color[i] === 'red') {
       const barEl = el('div');
       barEl.setAttribute('class', 'bar-red');
-      barEl.setAttribute('style', `height: ${array[i]}px`);
+      barEl.setAttribute('style', `height: ${array[i]*height}px`);
       arrayEl.appendChild(barEl);
     } else if (color[i] === 'blue') {
       const barEl = el('div');
       barEl.setAttribute('class', 'bar-blue');
-      barEl.setAttribute('style', `height: ${array[i]}px`);
+      barEl.setAttribute('style', `height: ${array[i]*height}px`);
       arrayEl.appendChild(barEl);
     } else {
       const barEl = el('div');
       barEl.setAttribute('class', 'bar');
-      barEl.setAttribute('style', `height: ${array[i]}px`);
+      barEl.setAttribute('style', `height: ${array[i]*height}px`);
       arrayEl.appendChild(barEl);
     }
   }
@@ -66,6 +76,7 @@ export function draw(color) {
 
 // selection sort button
 selectionBtn.addEventListener('click', () => {
+  disableButtons(true);
   selectionSort(array);
 });
 
@@ -73,6 +84,9 @@ selectionBtn.addEventListener('click', () => {
 // main
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Refresh');
+  console.log(`height: ${height}`);
   createArray(arrayLength);
 });
+
+
 

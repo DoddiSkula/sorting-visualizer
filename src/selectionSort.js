@@ -1,4 +1,5 @@
-import { draw } from "./index.js";
+import { draw, disableButtons } from "./index.js";
+
 
 let color = [];
 
@@ -38,7 +39,8 @@ export function selectionSort(array) {
             }
             if(i === (n-1)) {
                 color.fill('green');
-                draw(color); 
+                draw(color);
+                disableButtons(false);
             }
 
         }, 100 * i); 

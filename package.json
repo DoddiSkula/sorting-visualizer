@@ -1,12 +1,12 @@
 {
-  "name": "sorting",
+  "name": "sorting-visualizer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "rollup": "rollup -c",
     "rollup-watch": "rollup -c -w",
-    "browser-sync": "browser-sync start --server --files index.html ./styles.css ./dist/bundle.js",
+    "browser-sync": "browser-sync start --server --files index.html ./styles.css ./build/bundle.js",
     "dev": "concurrently npm:browser-sync npm:rollup-watch"
   },
   "author": "",
@@ -23,7 +23,7 @@
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "concurrently": "^5.3.0",
-    "rollup": "^2.33.3",
+    "rollup": "^2.35.1",
     "rollup-plugin-babel": "^4.4.0"
   }
 }

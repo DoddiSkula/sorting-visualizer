@@ -433,6 +433,7 @@
         if (i === n - 1) {
           color.fill('green');
           draw(color);
+          disableButtons(false);
         }
       }, 100 * i);
     };
@@ -447,6 +448,7 @@
   var arrayEl = document.querySelector('.array');
   var randomBtn = document.querySelector('#randomBtn');
   var selectionBtn = document.querySelector('#selectionBtn');
+  var height = window.innerHeight / 100;
   sliderValue.textContent = slider.value; // slider that changes array size
 
   slider.addEventListener('input', function (e) {
@@ -467,12 +469,17 @@
     array = [];
 
     for (var i = 0; i < arrayLength; i++) {
-      array.push(getRandomInt(8, 450));
+      array.push(getRandomInt(1, 80));
     }
 
     draw(array);
-  } // draws the array as bars
+  }
 
+  function disableButtons(bool) {
+    slider.disabled = bool;
+    randomBtn.disabled = bool;
+    selectionBtn.disabled = bool;
+  } // draws the array as bars
 
   function draw(color) {
     while (arrayEl.firstChild) {
@@ -483,14 +490,14 @@
       if (color[i] === 'green') {
         var barEl = el('div');
         barEl.setAttribute('class', 'bar-green');
-        barEl.setAttribute('style', "height: ".concat(array[i], "px"));
+        barEl.setAttribute('style', "height: ".concat(array[i] * height, "px"));
         arrayEl.appendChild(barEl);
       } else if (color[i] === 'red') {
         var _barEl = el('div');
 
         _barEl.setAttribute('class', 'bar-red');
 
-        _barEl.setAttribute('style', "height: ".concat(array[i], "px"));
+        _barEl.setAttribute('style', "height: ".concat(array[i] * height, "px"));
 
         arrayEl.appendChild(_barEl);
       } else if (color[i] === 'blue') {
@@ -498,7 +505,7 @@
 
         _barEl2.setAttribute('class', 'bar-blue');
 
-        _barEl2.setAttribute('style', "height: ".concat(array[i], "px"));
+        _barEl2.setAttribute('style', "height: ".concat(array[i] * height, "px"));
 
         arrayEl.appendChild(_barEl2);
       } else {
@@ -506,7 +513,7 @@
 
         _barEl3.setAttribute('class', 'bar');
 
-        _barEl3.setAttribute('style', "height: ".concat(array[i], "px"));
+        _barEl3.setAttribute('style', "height: ".concat(array[i] * height, "px"));
 
         arrayEl.appendChild(_barEl3);
       }
@@ -514,14 +521,17 @@
   } // selection sort button
 
   selectionBtn.addEventListener('click', function () {
+    disableButtons(true);
     selectionSort(array);
   }); // main
 
   document.addEventListener('DOMContentLoaded', function () {
     console.log('Refresh');
+    console.log("height: ".concat(height));
     createArray(arrayLength);
   });
 
+  exports.disableButtons = disableButtons;
   exports.draw = draw;
 
   Object.defineProperty(exports, '__esModule', { value: true });
