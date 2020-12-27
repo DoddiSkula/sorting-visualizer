@@ -18,37 +18,37 @@
  * @param  {...any} children List of elements or strings to append to element.
  * @returns {object} HTML element.
  */
-export function element(name, attributes = null, events = null,...children) {
-    const el = document.createElement(name);
-  
-    for (const child of children) {
-      if (!child) {
-        continue;
-      }
-  
-      if (attributes) {
-        for (const attrib in attributes) {
-          console.log('attrib :>> ', attrib);
-          el.setAttribute(attrib, attributes[attrib]);
-        }
-      }
-  
-      if (events) {
-        for (const event in events) {
-          el.addEventListener(event, events[event]);
-        }
-      }
-  
-      if (typeof child === 'string') {
-        el.appendChild(document.createTextNode(child));
-      } else {
-        el.appendChild(child);
+export function element(name, attributes = null, events = null, ...children) {
+  const el = document.createElement(name);
+
+  for (const child of children) {
+    if (!child) {
+      continue;
+    }
+
+    if (attributes) {
+      for (const attrib in attributes) {
+        console.log('attrib :>> ', attrib);
+        el.setAttribute(attrib, attributes[attrib]);
       }
     }
-  
-    return el;
+
+    if (events) {
+      for (const event in events) {
+        el.addEventListener(event, events[event]);
+      }
+    }
+
+    if (typeof child === 'string') {
+      el.appendChild(document.createTextNode(child));
+    } else {
+      el.appendChild(child);
+    }
   }
-  
+
+  return el;
+}
+
 /**
  * Simplified element function.
  * Creates an element and append elements or strings to it.
@@ -74,3 +74,14 @@ export function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
+
+export function createColors(n) {
+  let colors = [];
+
+  for (let i = 0; i < n; i++) {
+    colors.push('white');
+  }
+
+  return colors;
+}
+
