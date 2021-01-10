@@ -26,7 +26,7 @@ randomBtn.addEventListener('click', () => {
   createArray(arrayLength);
 });
 
-let array = [];                   // array to be sorted
+export let array = [];                   // array to be sorted
 export let arrayLength = slider.value;   // length of array
 let noColor = createColors(arrayLength);
 
@@ -87,19 +87,17 @@ export function draw(array, color) {
   }
 }
 
-// selection sort button event
+// Selection sort button event
 selectionBtn.addEventListener('click', () => {
   disableButtons(true);
   array = selectionSort(array);
 });
 
+// Quick sort button event
 quickBtn.addEventListener('click', () => {
   disableButtons(true);
   array = quickSortIterative(array);
-  console.log(array);
 });
-
-
 
 // Event triggered after DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {

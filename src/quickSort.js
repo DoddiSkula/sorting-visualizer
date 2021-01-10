@@ -1,5 +1,5 @@
 import { draw, disableButtons, arrayLength } from './index.js';
-import { createColors } from './helpers.js';
+import { createColors, sleep } from './helpers.js';
 
 let color = createColors(arrayLength);
 
@@ -90,6 +90,3 @@ async function partition(arr, start, end) {
     return pivotIndex;
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}

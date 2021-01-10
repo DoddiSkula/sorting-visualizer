@@ -85,3 +85,6 @@ export function createColors(n) {
   return colors;
 }
 
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
