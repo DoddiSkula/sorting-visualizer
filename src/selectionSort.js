@@ -7,7 +7,6 @@ export function selectionSort(array) {
 
     for (let i = 0; i < n; i++) {
         setTimeout(function () {
-            // Finding the smallest number in the subarray
             let min = i;
             for (let j = i + 1; j < n; j++) {
                 if (array[j] < array[min]) {

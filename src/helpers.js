@@ -9,8 +9,6 @@
  *    { click: () => { ... } },
  *    'Takki'
  *   );
- *  returns
- *  <button class="button">Takki</button> with a click handler.
  * 
  * @param {string} name Element name
  * @param {object} attributes Object containing attributes to attach to element.
@@ -63,7 +61,7 @@ export function el(name, ...children) {
 
 
 /**
- * Creates a random integer between min and max.
+ * Generates a random integer i, where min <= i < max.
  * 
  * @param {number} min
  * @param {number} max 
@@ -72,9 +70,15 @@ export function el(name, ...children) {
 export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min); 
 }
 
+/**
+ * Creates a new color array with white elements
+ * 
+ * @param {*} n length of array
+ * @returns {array} white color array 
+ */
 export function createColors(n) {
   let colors = [];
 
@@ -85,6 +89,11 @@ export function createColors(n) {
   return colors;
 }
 
+/**
+ * Returns a promise that resolves after a timeout of ms milliseconds
+ * 
+ * @param {*} ms milliseconds 
+ */
 export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

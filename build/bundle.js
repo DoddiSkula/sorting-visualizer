@@ -914,8 +914,6 @@
 	 *    { click: () => { ... } },
 	 *    'Takki'
 	 *   );
-	 *  returns
-	 *  <button class="button">Takki</button> with a click handler.
 	 * 
 	 * @param {string} name Element name
 	 * @param {object} attributes Object containing attributes to attach to element.
@@ -978,7 +976,7 @@
 	  return element.apply(void 0, [name, null, null].concat(children));
 	}
 	/**
-	 * Creates a random integer between min and max.
+	 * Generates a random integer i, where min <= i < max.
 	 * 
 	 * @param {number} min
 	 * @param {number} max 
@@ -988,8 +986,15 @@
 	function getRandomInt(min, max) {
 	  min = Math.ceil(min);
 	  max = Math.floor(max);
-	  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+	  return Math.floor(Math.random() * (max - min) + min);
 	}
+	/**
+	 * Creates a new color array with white elements
+	 * 
+	 * @param {*} n length of array
+	 * @returns {array} white color array 
+	 */
+
 	function createColors(n) {
 	  var colors = [];
 
@@ -999,6 +1004,12 @@
 
 	  return colors;
 	}
+	/**
+	 * Returns a promise that resolves after a timeout of ms milliseconds
+	 * 
+	 * @param {*} ms milliseconds 
+	 */
+
 	function sleep(ms) {
 	  return new Promise(function (resolve) {
 	    return setTimeout(resolve, ms);
@@ -1803,12 +1814,9 @@
 	      while (1) {
 	        switch (_context.prev = _context.next) {
 	          case 0:
-	            // Creating an array that we'll use as a stack, using the push() and pop() functions
-	            stack = []; // Adding the entire initial array as an "unsorted subarray"
-
+	            stack = [];
 	            stack.push(0);
-	            stack.push(arr.length - 1); // There isn't an explicit peek() function
-	            // The loop repeats as long as we have unsorted subarrays
+	            stack.push(arr.length - 1);
 
 	          case 3:
 	            if (!(stack[stack.length - 1] >= 0)) {
@@ -1816,7 +1824,6 @@
 	              break;
 	            }
 
-	            // Extracting the top unsorted subarray
 	            end = stack.pop();
 	            start = stack.pop();
 	            _context.next = 8;
@@ -1825,14 +1832,10 @@
 	          case 8:
 	            pivotIndex = _context.sent;
 
-	            // If there are unsorted elements to the "left" of the pivot,
-	            // we add that subarray to the stack so we can sort it later
 	            if (pivotIndex - 1 > start) {
 	              stack.push(start);
 	              stack.push(pivotIndex - 1);
-	            } // If there are unsorted elements to the "right" of the pivot,
-	            // we add that subarray to the stack so we can sort it later
-
+	            }
 
 	            if (pivotIndex + 1 < end) {
 	              stack.push(pivotIndex + 1);
@@ -1869,8 +1872,7 @@
 	          case 0:
 	            for (i = start; i <= end; i++) {
 	              color[i] = 'blue';
-	            } // Taking the last element as the pivot
-
+	            }
 
 	            pivotValue = arr[end];
 	            pivotIndex = start;
@@ -1989,7 +1991,6 @@
 
 	  var _loop = function _loop(i) {
 	    setTimeout(function () {
-	      // Finding the smallest number in the subarray
 	      var min = i;
 
 	      for (var j = i + 1; j < n; j++) {
@@ -2044,20 +2045,20 @@
 	randomBtn.addEventListener('click', function () {
 	  createArray(exports.arrayLength);
 	});
-	exports.array = []; // array to be sorted
+	var array = []; // array to be sorted
 
 	exports.arrayLength = slider.value; // length of array
 
 	var noColor = createColors(exports.arrayLength); // creates a new random array
 
 	function createArray(arrayLength) {
-	  exports.array = [];
+	  array = [];
 
 	  for (var i = 0; i < arrayLength; i++) {
-	    exports.array.push(getRandomInt(1, 80));
+	    array.push(getRandomInt(1, 80));
 	  }
 
-	  draw(exports.array, noColor);
+	  draw(array, noColor);
 	}
 	/**
 	 * Disables or enables all buttons
@@ -2073,10 +2074,11 @@
 	  quickBtn.disabled = bool;
 	}
 	/** 
-	 * Draws vertical bars for each element in array 
+	 * Draws vertical bars for each element in array, 
 	 * with the same color as the element in color with the same index.
 	 * 
-	 * @param {array} color string array containing names of colors.
+	 * @param {array} array array to be drawn
+	 * @param {array} color string array containing names of colors
 	 */
 
 	function draw(array, color) {
@@ -2120,14 +2122,13 @@
 
 	selectionBtn.addEventListener('click', function () {
 	  disableButtons(true);
-	  exports.array = selectionSort(exports.array);
+	  array = selectionSort(array);
 	}); // Quick sort button event
 
 	quickBtn.addEventListener('click', function () {
 	  disableButtons(true);
-	  exports.array = quickSortIterative(exports.array);
-	}); // Event triggered after DOM has loaded
-
+	  array = quickSortIterative(array);
+	});
 	document.addEventListener('DOMContentLoaded', function () {
 	  console.log("height: ".concat(height));
 	  createArray(exports.arrayLength);

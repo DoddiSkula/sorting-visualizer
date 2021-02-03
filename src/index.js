@@ -26,7 +26,7 @@ randomBtn.addEventListener('click', () => {
   createArray(arrayLength);
 });
 
-export let array = [];                   // array to be sorted
+let array = [];                   // array to be sorted
 export let arrayLength = slider.value;   // length of array
 let noColor = createColors(arrayLength);
 
@@ -52,10 +52,11 @@ export function disableButtons(bool) {
 }
 
 /** 
- * Draws vertical bars for each element in array 
+ * Draws vertical bars for each element in array, 
  * with the same color as the element in color with the same index.
  * 
- * @param {array} color string array containing names of colors.
+ * @param {array} array array to be drawn
+ * @param {array} color string array containing names of colors
  */
 export function draw(array, color) {
   while (arrayEl.firstChild) {
@@ -99,7 +100,7 @@ quickBtn.addEventListener('click', () => {
   array = quickSortIterative(array);
 });
 
-// Event triggered after DOM has loaded
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log(`height: ${height}`);
   createArray(arrayLength);
