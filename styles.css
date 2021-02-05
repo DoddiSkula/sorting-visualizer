@@ -17,19 +17,20 @@ p {
 }
 
 button {
-  width: 100px;
-  height: 2.5rem;
-  margin: 0.5rem;
-  background-color: #5bcecc;
+  background-color: #5BA9EF;
+  border-radius: 5px;
   border: none;
   color: #fbfbfb;
   cursor: pointer;
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
+  height: 2.5rem;
+  margin: 1rem;
+  width: 100px;
 }
 
 button:hover {
-  background-color: #4da8a6;
+  background-color: #5194cf;
   color: #fbfbfb;
 }
 
@@ -40,7 +41,7 @@ button:focus {
 .container {
   width: 100%;
   height: calc(100vh - 5rem);
-  background-color: rgb(250, 250, 250);
+  background: #fff;
 }
 
 .array {
@@ -78,7 +79,7 @@ button:focus {
 
 .toolbar {
   align-items: center;
-  background-color: rgb(250, 250, 250);
+  background-color: #ffffff;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -88,7 +89,7 @@ button:focus {
 }
 
 .divider {
-  border-left: 2px solid #e9e9e9;
+  border-left: 2px solid #ffffff;
   height: inherit;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -111,7 +112,7 @@ button:focus {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background: #5bcecc;
+  background: #4b81e8;
   cursor: pointer;
 }
 
@@ -119,13 +120,36 @@ button:focus {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #5bcecc;
+  background: #4b81e8;
   cursor: pointer;
 }
 
 .slider-value {
   color: #7d7d7d;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
   font-size: 1rem;
   font-family: sans-serif;
+}
+
+select {
+  background-color: #5BA9EF;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  width: 150px;
+}
+
+select:focus {
+outline: none;
+}
+
+option {
+  background-color: #4f92ce;
+  font-size: 1rem;
 }

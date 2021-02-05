@@ -6,8 +6,8 @@ const slider = document.querySelector('.slider');
 const sliderValue = document.querySelector('.slider-value');
 const arrayEl = document.querySelector('.array');
 const randomBtn = document.querySelector('#randomBtn');
-const selectionBtn = document.querySelector('#selectionBtn');
-const quickBtn = document.querySelector('#quickBtn');
+const startBtn = document.querySelector('#startBtn');
+const selectAlgorithm = document.querySelector('#algorithms');
 
 let height = window.innerHeight / 100;
 
@@ -21,13 +21,9 @@ slider.addEventListener('input', (e) => {
   createArray(arrayLength);
 });
 
-// random button event
-randomBtn.addEventListener('click', () => {
-  createArray(arrayLength);
-});
 
-let array = [];                   // array to be sorted
-export let arrayLength = slider.value;   // length of array
+let array = [];                           // array to be sorted
+export let arrayLength = slider.value;    // length of array
 let noColor = createColors(arrayLength);
 
 // creates a new random array
@@ -47,8 +43,8 @@ function createArray(arrayLength) {
 export function disableButtons(bool) {
   slider.disabled = bool;
   randomBtn.disabled = bool;
-  selectionBtn.disabled = bool;
-  quickBtn.disabled = bool;
+  startBtn.disabled = bool;
+  selectAlgorithm.disabled = bool;
 }
 
 /** 
@@ -88,23 +84,27 @@ export function draw(array, color) {
   }
 }
 
-// Selection sort button event
-selectionBtn.addEventListener('click', () => {
-  disableButtons(true);
-  array = selectionSort(array);
+// random button event
+randomBtn.addEventListener('click', () => {
+  createArray(arrayLength);
 });
 
-// Quick sort button event
-quickBtn.addEventListener('click', () => {
-  disableButtons(true);
-  array = quickSortIterative(array);
+// start button event
+startBtn.addEventListener('click', () => {
+  switch(selectAlgorithm.value) {
+    case 'selection':
+      disableButtons(true);
+      array = selectionSort(array);
+      break;
+    case 'quick':
+      disableButtons(true);
+      array = quickSortIterative(array);
+    default:
+      break;
+  }
 });
-
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log(`height: ${height}`);
   createArray(arrayLength);
 });
-
-
-
