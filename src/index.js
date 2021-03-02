@@ -1,18 +1,27 @@
-import { createColors, el, getRandomInt } from './helpers.js';
+import { getRandomInt, disableButtons } from './helpers.js';
+import { draw } from './draw.js';
 import { quickSortIterative } from './quickSort.js';
 import { selectionSort } from './selectionSort.js';
 
 const slider = document.querySelector('.slider');
 const sliderValue = document.querySelector('.slider-value');
-const arrayEl = document.querySelector('.array');
 const randomBtn = document.querySelector('#randomBtn');
 const startBtn = document.querySelector('#startBtn');
 const selectAlgorithm = document.querySelector('#algorithms');
 
-let height = window.innerHeight / 100;
-
 sliderValue.textContent = slider.value;
 
+let array = []; // array to be sorted
+let arrayLength = slider.value; // length of array
+
+// creates a new random array
+function createArray() {
+  array = [];
+  for (let i = 0; i < arrayLength; i += 1) {
+    array.push(getRandomInt(1, 80));
+  }
+  draw(array, []);
+}
 
 // slider event
 slider.addEventListener('input', (e) => {
@@ -21,69 +30,6 @@ slider.addEventListener('input', (e) => {
   createArray(arrayLength);
 });
 
-
-let array = [];                           // array to be sorted
-export let arrayLength = slider.value;    // length of array
-let noColor = createColors(arrayLength);
-
-// creates a new random array
-function createArray(arrayLength) {
-  array = [];
-  for (let i = 0; i < arrayLength; i++) {
-    array.push(getRandomInt(1, 80));
-  }
-  draw(array, noColor);
-}
-
-/**
- * Disables or enables all buttons
- * 
- * @param {boolean} bool if true disable all buttons, else enable all buttons.
- */
-export function disableButtons(bool) {
-  slider.disabled = bool;
-  randomBtn.disabled = bool;
-  startBtn.disabled = bool;
-  selectAlgorithm.disabled = bool;
-}
-
-/** 
- * Draws vertical bars for each element in array, 
- * with the same color as the element in color with the same index.
- * 
- * @param {array} array array to be drawn
- * @param {array} color string array containing names of colors
- */
-export function draw(array, color) {
-  while (arrayEl.firstChild) {
-    arrayEl.removeChild(arrayEl.lastChild);
-  }
-
-  for (let i = 0; i < arrayLength; i++) {
-    if (color[i] === 'green') {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar-green');
-      barEl.setAttribute('style', `height: ${array[i] * height}px`);
-      arrayEl.appendChild(barEl);
-    } else if (color[i] === 'red') {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar-red');
-      barEl.setAttribute('style', `height: ${array[i] * height}px`);
-      arrayEl.appendChild(barEl);
-    } else if (color[i] === 'blue') {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar-blue');
-      barEl.setAttribute('style', `height: ${array[i] * height}px`);
-      arrayEl.appendChild(barEl);
-    } else {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar');
-      barEl.setAttribute('style', `height: ${array[i] * height}px`);
-      arrayEl.appendChild(barEl);
-    }
-  }
-}
-
 // random button event
 randomBtn.addEventListener('click', () => {
   createArray(arrayLength);
@@ -91,7 +37,7 @@ randomBtn.addEventListener('click', () => {
 
 // start button event
 startBtn.addEventListener('click', () => {
-  switch(selectAlgorithm.value) {
+  switch (selectAlgorithm.value) {
     case 'selection':
       disableButtons(true);
       array = selectionSort(array);
@@ -99,12 +45,12 @@ startBtn.addEventListener('click', () => {
     case 'quick':
       disableButtons(true);
       array = quickSortIterative(array);
+      break;
     default:
       break;
   }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log(`height: ${height}`);
   createArray(arrayLength);
 });
