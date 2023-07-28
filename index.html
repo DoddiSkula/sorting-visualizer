@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sorting Algorithms Visualizer</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <div class="array"></div>
-    </div>
-    <div class="toolbar">
-      <button id="randomBtn">Random</button>
-      <p>Array size</p>
-      <input class="slider" type="range" min="10" max="100" value="50" />
-      <div class="slider-value"></div>
-      <select name="algorithms" id="algorithms" >
-        <option value="selection">Selection sort</option>
-        <option value="quick">Quicksort</option>
-      </select>
-      <button id="startBtn">Start</button>
-    </div>
-    <script src="./build/bundle.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Sorting Algorithms Visualizer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="array"></div>
+  </div>
+  <div class="toolbar">
+    <p>Array size</p>
+    <input class="slider" type="range" min="10" max="100" value="50" />
+    <div class="slider-value"></div>
+    <button id="randomBtn">Randomize</button>
+    <select name="algorithms" id="algorithms">
+      <option value="selection">Selection sort</option>
+      <option value="quick">Quicksort</option>
+    </select>
+    <button id="startBtn">Start</button>
+  </div>
+  <script src="./build/bundle.js"></script>
+</body>
+
 </html>

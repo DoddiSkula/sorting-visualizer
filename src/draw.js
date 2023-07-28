@@ -1,7 +1,7 @@
-import { el } from './helpers.js';
+import { el } from "./helpers.js";
 
-const arrayEl = document.querySelector('.array');
-const height = window.innerHeight / 100;
+const arrayEl = document.querySelector(".array");
+const height = window.innerHeight / 130;
 
 /**
  * Draws vertical bars for each element in array,
@@ -16,25 +16,25 @@ export function draw(arr, color) {
   }
 
   for (let i = 0; i < arr.length; i += 1) {
-    if (color[i] === 'green') {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar-green');
-      barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+    if (color[i] === "green") {
+      const barEl = el("div");
+      barEl.setAttribute("class", "bar-green");
+      barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
       arrayEl.appendChild(barEl);
-    } else if (color[i] === 'red') {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar-red');
-      barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+    } else if (color[i] === "red") {
+      const barEl = el("div");
+      barEl.setAttribute("class", "bar-red");
+      barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
       arrayEl.appendChild(barEl);
-    } else if (color[i] === 'blue') {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar-blue');
-      barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+    } else if (color[i] === "blue") {
+      const barEl = el("div");
+      barEl.setAttribute("class", "bar-blue");
+      barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
       arrayEl.appendChild(barEl);
     } else {
-      const barEl = el('div');
-      barEl.setAttribute('class', 'bar');
-      barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+      const barEl = el("div");
+      barEl.setAttribute("class", "bar");
+      barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
       arrayEl.appendChild(barEl);
     }
   }

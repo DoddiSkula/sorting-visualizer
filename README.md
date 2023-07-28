@@ -1,14 +1,13 @@
 # Sorting Algorithms Visualizer
-This tool visualizes how different sorting algorithms work. Each element in the array is represented as a vertical bar that moves according to it's position (index) in the array.
 
+This tool visualizes how different sorting algorithms work. Each element in the array is represented as a vertical bar that moves according to it's position (index) in the array.
 
 Live version can be viewed here https://doddiskula.github.io/sorting-visualizer/.
 
 ## Algorithms
+
 - [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)
 - [Quicksort (iterative)](https://en.wikipedia.org/wiki/Quicksort)
-
-More algorithms will be implemented!
 
 ---
 

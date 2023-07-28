@@ -57,17 +57,6 @@
   }
 
   /**
-   * Generates a random integer i, where min <= i < max.
-   *
-   * @param {number} min
-   * @param {number} max
-   * @returns {integer} random integer between min and max.
-   */
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-  }
-
-  /**
    * Returns a promise that resolves after a timeout of ms milliseconds
    *
    * @param {*} ms milliseconds
@@ -93,8 +82,8 @@
     selectAlgorithm.disabled = bool;
   }
 
-  const arrayEl = document.querySelector('.array');
-  const height = window.innerHeight / 100;
+  const arrayEl = document.querySelector(".array");
+  const height = window.innerHeight / 130;
 
   /**
    * Draws vertical bars for each element in array,
@@ -109,25 +98,25 @@
     }
 
     for (let i = 0; i < arr.length; i += 1) {
-      if (color[i] === 'green') {
-        const barEl = el('div');
-        barEl.setAttribute('class', 'bar-green');
-        barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+      if (color[i] === "green") {
+        const barEl = el("div");
+        barEl.setAttribute("class", "bar-green");
+        barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
         arrayEl.appendChild(barEl);
-      } else if (color[i] === 'red') {
-        const barEl = el('div');
-        barEl.setAttribute('class', 'bar-red');
-        barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+      } else if (color[i] === "red") {
+        const barEl = el("div");
+        barEl.setAttribute("class", "bar-red");
+        barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
         arrayEl.appendChild(barEl);
-      } else if (color[i] === 'blue') {
-        const barEl = el('div');
-        barEl.setAttribute('class', 'bar-blue');
-        barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+      } else if (color[i] === "blue") {
+        const barEl = el("div");
+        barEl.setAttribute("class", "bar-blue");
+        barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
         arrayEl.appendChild(barEl);
       } else {
-        const barEl = el('div');
-        barEl.setAttribute('class', 'bar');
-        barEl.setAttribute('style', `height: ${arr[i] * height}px`);
+        const barEl = el("div");
+        barEl.setAttribute("class", "bar");
+        barEl.setAttribute("style", `height: ${arr[i] * height + 50}px`);
         arrayEl.appendChild(barEl);
       }
     }
@@ -241,53 +230,79 @@
     return arr;
   }
 
-  const slider = document.querySelector('.slider');
-  const sliderValue = document.querySelector('.slider-value');
-  const randomBtn = document.querySelector('#randomBtn');
-  const startBtn = document.querySelector('#startBtn');
-  const selectAlgorithm = document.querySelector('#algorithms');
+  const slider = document.querySelector(".slider");
+  const sliderValue = document.querySelector(".slider-value");
+  const randomBtn = document.querySelector("#randomBtn");
+  const startBtn = document.querySelector("#startBtn");
+  const selectAlgorithm = document.querySelector("#algorithms");
 
   sliderValue.textContent = slider.value;
 
   let array = []; // array to be sorted
   let arrayLength = slider.value; // length of array
 
+  function populateArray(N) {
+    const newArr = [];
+    for (let i = 1; i <= N; i++) {
+      newArr.push(i);
+    }
+    return newArr;
+  }
+
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+
   // creates a new random array
   function createArray() {
-    array = [];
-    for (let i = 0; i < arrayLength; i += 1) {
-      array.push(getRandomInt(1, 80));
-    }
+    array = populateArray(arrayLength);
+    array = shuffle(array);
     draw(array, []);
   }
 
   // slider event
-  slider.addEventListener('input', (e) => {
+  slider.addEventListener("input", (e) => {
     sliderValue.textContent = e.target.value;
     arrayLength = e.target.value;
     createArray();
   });
 
   // random button event
-  randomBtn.addEventListener('click', () => {
+  randomBtn.addEventListener("click", () => {
     createArray();
   });
 
   // start button event
-  startBtn.addEventListener('click', () => {
+  startBtn.addEventListener("click", () => {
     switch (selectAlgorithm.value) {
-      case 'selection':
+      case "selection":
         disableButtons(true);
         array = selectionSort(array);
         break;
-      case 'quick':
+      case "quick":
         disableButtons(true);
         array = quickSortIterative(array);
         break;
     }
   });
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     createArray();
   });
 
